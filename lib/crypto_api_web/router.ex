@@ -11,6 +11,11 @@ defmodule CryptoApiWeb.Router do
 
     post "/login", SessionController, :create
   end
+
+  scope "/api/v1", CryptoApiWeb.V1 do
+    pipe_through :api
+
+    get "/crypto/btc", BitcoinPriceController, :index
   end
 
   # Enables LiveDashboard only for development
