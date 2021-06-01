@@ -6,7 +6,11 @@ defmodule CryptoApiWeb.Router do
   end
 
   scope "/api", CryptoApiWeb do
+  scope "/api/v1", CryptoApiWeb.V1 do
     pipe_through :api
+
+    post "/login", SessionController, :create
+  end
   end
 
   # Enables LiveDashboard only for development
