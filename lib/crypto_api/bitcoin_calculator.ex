@@ -21,6 +21,6 @@ defmodule CryptoApi.BitcoinCalculator do
     File.read!("currencies.json")
     |> Jason.decode!()
     |> Map.fetch!(currency_name)
-    |> Decimal.new()
+    |> Decimal.from_float()
   end
 end

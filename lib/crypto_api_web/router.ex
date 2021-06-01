@@ -16,6 +16,7 @@ defmodule CryptoApiWeb.Router do
     pipe_through :api
 
     get "/crypto/btc", BitcoinPriceController, :index
+    put "/crypto/btc", CurrencyController, :update
   end
 
   # Enables LiveDashboard only for development
