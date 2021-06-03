@@ -25,7 +25,7 @@ defmodule CryptoApi.MixProject do
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(:test), do: ["lib", "test/support", "test/mocks"]
   defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
@@ -46,7 +46,8 @@ defmodule CryptoApi.MixProject do
       {:httpoison, "~> 1.8"},
       {:decimal, "~> 2.0"},
       {:number, "~> 1.0.1"},
-      {:cors_plug, "~> 2.0"}
+      {:cors_plug, "~> 2.0"},
+      {:mock, "~> 0.3.0", only: :test}
     ]
   end
 
