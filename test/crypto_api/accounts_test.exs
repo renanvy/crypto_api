@@ -14,7 +14,7 @@ defmodule CryptoApi.AccountsTest do
     test "returns error when login data is invalid" do
       payload = %{"email" => "invalid-email", "password" => "invalid-password"}
 
-      assert {:error, _changeset} = Accounts.login(payload)
+      assert {:error, :invalid_login} = Accounts.login(payload)
     end
   end
 end
