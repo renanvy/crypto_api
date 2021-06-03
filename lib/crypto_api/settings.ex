@@ -7,7 +7,7 @@ defmodule CryptoApi.Settings do
         currencies =
           File.read!("currencies.json")
           |> Jason.decode!()
-          |> Map.put(params["currency_type"], Number.Conversion.to_float(params["value"]))
+          |> Map.put(params["currency"], Number.Conversion.to_float(params["value"]))
 
         File.write("currencies.json", Jason.encode!(currencies))
 
