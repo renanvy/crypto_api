@@ -9,7 +9,6 @@ defmodule CryptoApiWeb.V1.CurrencyController do
     conn
     |> put_status(200)
     |> json(currencies)
-
   end
 
   def update(conn, params) do

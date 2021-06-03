@@ -5,7 +5,10 @@ defmodule CryptoApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", CryptoApiWeb do
+  pipeline :api_protected do
+    plug CryptoApiWeb.Plugs.Authorization
+  end
+
   scope "/api/v1", CryptoApiWeb.V1 do
     pipe_through :api
 
@@ -13,7 +16,7 @@ defmodule CryptoApiWeb.Router do
   end
 
   scope "/api/v1", CryptoApiWeb.V1 do
-    pipe_through :api
+    pipe_through [:api, :api_protected]
 
     get "/crypto/btc", BitcoinPriceController, :index
     patch "/crypto/btc", CurrencyController, :update
