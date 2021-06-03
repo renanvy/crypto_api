@@ -11,7 +11,7 @@ defmodule CryptoApi.BitcoinCalculatorTest do
     end
 
     test "convert bitcoin price to BRL (Brazilian Real)", %{usd_rate: usd_rate} do
-      assert BitcoinCalculator.calculate(usd_rate, :brl) == 200541.995495
+      assert BitcoinCalculator.calculate(usd_rate, :brl) == 210_277.04382
     end
 
     test "convert bitcoin price to EUR (Euro)", %{usd_rate: usd_rate} do
