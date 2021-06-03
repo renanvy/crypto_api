@@ -4,7 +4,7 @@ defmodule CryptoApiWeb.V1.BitcoinPriceController do
   alias CryptoApi.ExternalApis.CoinDesk
   alias CryptoApiWeb.Api.V1.BitcoinPriceView
 
-  def index(conn, %{"bitcoin_quantity" => bitcoin_quantity}) do
+  def index(conn, _params) do
     conn
     |> put_status(200)
     |> put_view(BitcoinPriceView)

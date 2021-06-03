@@ -12,7 +12,7 @@ defmodule CryptoApi.Accounts.User do
   def changeset(%User{} = user, attrs) do
     user
     |> cast(attrs, [:email, :password])
-    |> validate_required([:email, :password])
+    |> validate_required([:email, :password], message: "é obrigatório")
     |> validate_format(
       :email,
       ~r/^[A-Za-z0-9._%+-+']+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/,

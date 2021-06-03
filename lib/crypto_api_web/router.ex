@@ -17,6 +17,8 @@ defmodule CryptoApiWeb.Router do
 
     get "/crypto/btc", BitcoinPriceController, :index
     patch "/crypto/btc", CurrencyController, :update
+
+    get "/currencies", CurrencyController, :index
   end
 
   # Enables LiveDashboard only for development

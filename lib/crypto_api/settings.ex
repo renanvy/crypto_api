@@ -1,6 +1,12 @@
 defmodule CryptoApi.Settings do
   alias CryptoApi.Settings.Currency
 
+  def list_currencies do
+    "currencies.json"
+    |> File.read!()
+    |> Jason.decode!()
+  end
+
   def update_currency(params) do
     case Currency.changeset(%Currency{}, params) do
       %Ecto.Changeset{valid?: true} ->
