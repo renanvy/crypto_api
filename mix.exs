@@ -45,7 +45,8 @@ defmodule CryptoApi.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:httpoison, "~> 1.8"},
       {:decimal, "~> 2.0"},
-      {:number, "~> 1.0.1"}
+      {:number, "~> 1.0.1"},
+      {:cors_plug, "~> 2.0"}
     ]
   end
 
