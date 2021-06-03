@@ -9,13 +9,13 @@ defmodule CryptoApiWeb.Router do
     plug CryptoApiWeb.Plugs.Authorization
   end
 
-  scope "/api/v1", CryptoApiWeb.V1 do
+  scope "/api/v1", CryptoApiWeb.V1, as: :api_v1 do
     pipe_through :api
 
     post "/login", SessionController, :create
   end
 
-  scope "/api/v1", CryptoApiWeb.V1 do
+  scope "/api/v1", CryptoApiWeb.V1, as: :api_v1 do
     pipe_through [:api, :api_protected]
 
     get "/crypto/btc", BitcoinPriceController, :index

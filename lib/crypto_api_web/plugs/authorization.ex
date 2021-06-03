@@ -19,8 +19,6 @@ defmodule CryptoApiWeb.Plugs.Authorization do
   end
 
   defp get_authorization_token(conn) do
-    IO.inspect(conn)
-
     case get_req_header(conn, "authorization") do
       [token] when token != nil and token != "" -> {:ok, token}
       _ -> {:error, :missing_token}
