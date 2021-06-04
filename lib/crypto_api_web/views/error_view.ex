@@ -19,4 +19,8 @@ defmodule CryptoApiWeb.ErrorView do
   def render("error.json", %{changeset: changeset}) do
     Changeset.traverse_errors(changeset, &translate_error/1)
   end
+
+  def render("404.json", _assigns) do
+    %{message: "Endpoint não encontrado"}
+  end
 end
