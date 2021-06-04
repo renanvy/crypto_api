@@ -1,19 +1,56 @@
-# CryptoApi
+# CryptoAPI
 
-To start your Phoenix server:
+Esta API foi desenvolvida para pesquisar o valor do Bitcoin em diferentes tipo de moedas utilizando Elixir e Phoenix.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+A aplicação frontend você pode analisar aqui  https://github.com/renanvy/crypto_frontend
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+### Antes de rodar o projeto é necessário:
+* Ter instalado Elixir 1.12.1
+* Ter instalado Erlang 24
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Obs: Você pode utilizar um gerador de versões como asdf https://github.com/asdf-vm/asdf para controlar as versões de cada linguagem
 
-## Learn more
+### Dependências
+Instale as dependências do projeto rodando no terminal o comando: `mix deps.get`
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+### Testes
+Para executar todos os testes rode o seguinte comando no terminal: `mix test`
+
+### Iniciar o servidor
+Para iniciar o servidor da API rode o seguinte comando no terminal: `mix phx.server`
+
+### Documentação da API
+
+**Logar usuário:**
+- Endpoint: `http://localhost:4000/api/v1/login`
+- Tipo: `POST`
+- Body:
+```json
+{
+    "email": "renanvy@gmail.com",
+    "password": "123456"
+}
+```
+- Resposta: ```{"token": "t6kgsbgcobpj0pry"}```
+
+**Listar valor do Bitcoin em outras moedas**
+- Endpoint: `http://localhost:4000/api/v1/crypto/btc`
+- Tipo: `GET`
+- Header: `Authorization: t6kgsbgcobpj0pry`
+
+**Listar valor das moedas dentro do arquivo currencies.json**
+- Endpoint: `http://localhost:4000/api/v1/currencies`
+- Tipo: `GET`
+- Header: `Authorization: t6kgsbgcobpj0pry`
+
+**Atualizar o valor de uma moeda dentro do arquivo currencies.json**
+- Endpoint: `http://localhost:4000/api/v1/crypto/btc`
+- Tipo: `PATCH`
+- Header: `Authorization: t6kgsbgcobpj0pry`
+- Body:
+```json
+{
+    "currency": "BRL",
+	"value": 5.2
+}
+```

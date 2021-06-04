@@ -5,7 +5,7 @@ defmodule CryptoApiWeb.ErrorViewTest do
   import Phoenix.View
 
   test "renders 404.json" do
-    assert render(CryptoApiWeb.ErrorView, "404.json", []) == %{errors: %{detail: "Not Found"}}
+    assert render(CryptoApiWeb.ErrorView, "404.json", []) == %{message: "Endpoint não encontrado"}
   end
 
   test "renders 500.json" do
