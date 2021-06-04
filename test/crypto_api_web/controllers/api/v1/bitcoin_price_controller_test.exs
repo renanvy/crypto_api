@@ -1,7 +1,7 @@
 defmodule CryptoApiWeb.Api.V1.BitcoinPriceControllerTest do
   use CryptoApiWeb.ConnCase, async: true
 
-  alias CryptoApi.Mocks.CoinDeskMock
+  alias CryptoApi.Mocks.ModifiedCoinDeskMock
   alias CryptoApi.ExternalApis.CoinDesk
 
   import Mock
@@ -18,7 +18,7 @@ defmodule CryptoApiWeb.Api.V1.BitcoinPriceControllerTest do
 
   describe "GET /api/v1/crypto/btc" do
     test "list bitcoin prices per currency", %{conn: conn} do
-      {:ok, prices} = CoinDeskMock.get_prices()
+      {:ok, prices} = ModifiedCoinDeskMock.get_prices()
 
       with_mock CoinDesk, get_prices: fn -> {:ok, prices} end do
         conn = get(conn, Routes.api_v1_bitcoin_price_path(conn, :index))

@@ -6,12 +6,14 @@ defmodule CryptoApi.ExternalApis.CoinDesk do
   def get_prices() do
     case HTTPoison.get(@endpoint) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        {:ok,
-         body
-         |> Jason.decode!()
-         |> insert_rate(:brl)
-         |> insert_rate(:eur)
-         |> insert_rate(:cad)}
+        result =
+          body
+          |> Jason.decode!()
+          |> insert_rate(:eur)
+          |> insert_rate(:cad)
+          |> insert_rate(:brl)
+
+        {:ok, result}
 
       {:error, %HTTPoison.Error{reason: reason}} ->
         {:error, reason}

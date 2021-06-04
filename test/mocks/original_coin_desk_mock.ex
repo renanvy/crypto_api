@@ -1,30 +1,12 @@
-defmodule CryptoApi.Mocks.CoinDeskMock do
+defmodule CryptoApi.Mocks.OriginalCoinDeskMock do
   def get_prices do
-    prices = %{
+    body = %{
       "bpi" => %{
-        "BRL" => %{
-          "code" => "BRL",
-          "description" => "Brazilian Real",
-          "rate" => "199,263.83",
-          "rate_float" => 199_263.82575
-        },
         "BTC" => %{
           "code" => "BTC",
           "description" => "Bitcoin",
           "rate" => "1.0000",
           "rate_float" => 1
-        },
-        "CAD" => %{
-          "code" => "CAD",
-          "description" => "Canadian Dollar",
-          "rate" => "55,716.49",
-          "rate_float" => 55716.4872
-        },
-        "EUR" => %{
-          "code" => "EUR",
-          "description" => "Euro",
-          "rate" => "35,596.64",
-          "rate_float" => 35596.6446
         },
         "USD" => %{
           "code" => "USD",
@@ -42,6 +24,6 @@ defmodule CryptoApi.Mocks.CoinDeskMock do
       }
     }
 
-    {:ok, prices}
+    {:ok, %HTTPoison.Response{status_code: 200, body: Jason.encode!(body)}}
   end
 end
