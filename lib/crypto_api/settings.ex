@@ -1,8 +1,10 @@
 defmodule CryptoApi.Settings do
   alias CryptoApi.Settings.Currency
 
+  @currency_file_path "currencies-#{Mix.env()}.json"
+
   def list_currencies do
-    "currencies.json"
+    @currency_file_path
     |> File.read!()
     |> Jason.decode!()
   end
@@ -11,11 +13,11 @@ defmodule CryptoApi.Settings do
     case Currency.changeset(%Currency{}, params) do
       %Ecto.Changeset{valid?: true} ->
         currencies =
-          File.read!("currencies.json")
+          File.read!(@currency_file_path)
           |> Jason.decode!()
           |> Map.put(params["currency"], Number.Conversion.to_float(params["value"]))
 
-        File.write("currencies.json", Jason.encode!(currencies))
+        File.write(@currency_file_path, Jason.encode!(currencies))
 
         {:ok, currencies}
 

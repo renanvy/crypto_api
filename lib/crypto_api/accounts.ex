@@ -7,7 +7,17 @@ defmodule CryptoApi.Accounts do
   def login(params) do
     case User.changeset(%User{}, params) do
       %Ecto.Changeset{valid?: true} ->
-        {:ok, generate_token()}
+        token = generate_token()
+
+        tokens =
+          "tokens-#{Mix.env()}.json"
+          |> File.read!()
+          |> Jason.decode!()
+          |> Map.put(token, params["email"])
+
+        File.write("tokens-#{Mix.env()}.json", Jason.encode!(tokens))
+
+        {:ok, token}
 
       _ ->
         {:error, :invalid_login}

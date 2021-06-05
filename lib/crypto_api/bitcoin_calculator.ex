@@ -18,7 +18,7 @@ defmodule CryptoApi.BitcoinCalculator do
   end
 
   defp get_currency_value(currency_name) do
-    File.read!("currencies.json")
+    File.read!("currencies-#{Mix.env()}.json")
     |> Jason.decode!()
     |> Map.fetch!(currency_name)
     |> Decimal.from_float()

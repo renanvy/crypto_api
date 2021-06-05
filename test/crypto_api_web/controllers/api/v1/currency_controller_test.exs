@@ -6,7 +6,7 @@ defmodule CryptoApiWeb.Api.V1.CurrencyControllerTest do
       conn
       |> put_req_header("accept", "application/json")
       |> put_req_header("content-type", "application/json")
-      |> put_req_header("authorization", "token")
+      |> put_req_header("authorization", "ar6tr1y2kfkj86kb")
 
     {:ok, conn: conn}
   end
@@ -52,7 +52,7 @@ defmodule CryptoApiWeb.Api.V1.CurrencyControllerTest do
   end
 
   defp get_currencies do
-    "currencies.json"
+    "currencies-#{Mix.env()}.json"
     |> File.read!()
     |> Jason.decode!()
   end

@@ -19,9 +19,12 @@ defmodule CryptoApiWeb.Plugs.Authorization do
   end
 
   defp get_authorization_token(conn) do
-    case get_req_header(conn, "authorization") do
-      [token] when token != nil and token != "" -> {:ok, token}
-      _ -> {:error, :missing_token}
+    with [token] <- get_req_header(conn, "authorization"),
+         tokens <- File.read!("tokens-#{Mix.env()}.json") |> Jason.decode!(),
+         {:ok, _email} <- Map.fetch(tokens, token) do
+      {:ok, token}
+    else
+      _ -> {:error, :invalid_token}
     end
   end
 end

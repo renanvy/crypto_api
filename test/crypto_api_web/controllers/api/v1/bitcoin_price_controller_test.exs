@@ -11,7 +11,7 @@ defmodule CryptoApiWeb.Api.V1.BitcoinPriceControllerTest do
       conn
       |> put_req_header("accept", "application/json")
       |> put_req_header("content-type", "application/json")
-      |> put_req_header("authorization", "token")
+      |> put_req_header("authorization", "ar6tr1y2kfkj86kb")
 
     {:ok, conn: conn}
   end

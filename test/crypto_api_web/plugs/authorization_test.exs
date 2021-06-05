@@ -19,7 +19,7 @@ defmodule CryptoApiWeb.Plugs.AuthorizationTest do
       conn =
         conn
         |> bypass_through()
-        |> put_req_header("authorization", "token")
+        |> put_req_header("authorization", "ar6tr1y2kfkj86kb")
         |> get("/api/v1/currencies")
         |> Authorization.call(%{})
 
