@@ -2,7 +2,17 @@
 
 Esta API foi desenvolvida para pesquisar o valor do Bitcoin em diferentes tipo de moedas utilizando Elixir e Phoenix.
 
-A aplicação frontend você pode analisar aqui  https://github.com/renanvy/crypto_frontend
+A aplicação frontend você pode encontrar aqui  https://github.com/renanvy/crypto_frontend
+
+## INICIANDO APLICAÇÃO COM DOCKER
+
+Iniciar aplicação:
+`docker-compose up --build`
+
+Rodar testes:
+`docker-compose run web mix test`
+
+## INICIANDO APLICAÇÃO SEM DOCKER
 
 ### Antes de rodar o projeto é necessário:
 * Ter instalado Elixir 1.12.1
@@ -12,6 +22,9 @@ Obs: Você pode utilizar um gerador de versões como asdf https://github.com/asd
 
 ### Dependências
 Instale as dependências do projeto rodando no terminal o comando: `mix deps.get`
+
+### Banco
+Crie o banco de dados com o seguinte comando: `mix ecto.create`
 
 ### Testes
 Para executar todos os testes rode o seguinte comando no terminal: `mix test`
