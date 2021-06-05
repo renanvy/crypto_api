@@ -69,6 +69,8 @@ Para iniciar o servidor da API rode o seguinte comando no terminal: `mix phx.ser
 ```
 
 
+### Detalhes
+
 <img width="867" alt="Captura de Tela 2021-06-05 às 14 30 19" src="https://user-images.githubusercontent.com/2266325/120900417-12f63f80-c60b-11eb-936b-19b319915070.png">
 
 <img width="916" alt="Captura de Tela 2021-06-05 às 14 30 34" src="https://user-images.githubusercontent.com/2266325/120900422-18538a00-c60b-11eb-9a31-da7aff66a890.png">
